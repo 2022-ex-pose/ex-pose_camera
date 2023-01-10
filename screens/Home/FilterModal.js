@@ -5,11 +5,13 @@ import {
   Animated,
   ScrollView,
   TouchableWithoutFeedback,
-  Modal
+  Modal,
+  TouchableOpacity
 } from 'react-native';
 
-import { COLORS, FONTS, SIZES, constants, icons } from "../../constants";
+import { COLORS, FONTS, SIZES, constants, icons, dummyData } from "../../constants";
 
+import { FlatList } from 'react-native-gesture-handler';
 
 const FilterModal = ({ isVisible, onClose }) => {
 
@@ -36,6 +38,38 @@ const FilterModal = ({ isVisible, onClose }) => {
     inputRange: [0,1],
     outputRange: [SIZES.height, SIZES.height-320]
   })
+
+  function renderFilterOption() {
+    return (
+      <FlatList
+        horizontal
+        data={dummyData.FilterOption}
+        keyExtractor={item => `${item.id}`}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          marginTop: 5,
+          marginBottom: 20
+        }}
+        
+        renderItem={({ item, index }) => (
+          <TouchableOpacity
+            style={{
+              marginLeft: 10,
+              marginRight: index == dummyData.FilterOption.length -1 ? SIZES.padding : 10
+            }}
+        > 
+        <Text
+        style={{
+          color: COLORS.white == item.id ? COLORS.primary : COLORS.black,
+          ...FONTS.h3
+        }}>
+          {item.name}
+        </Text>
+        </TouchableOpacity>
+        )}
+      />
+    )
+  }
 
   return (
     <Modal
@@ -71,8 +105,14 @@ const FilterModal = ({ isVisible, onClose }) => {
                 padding: SIZES.padding,
                 backgroundColor: COLORS.grey
               }}>
+          <View>
+            {renderFilterOption()}
+          </View>
 
             </Animated.View>
+
+            
+
           </View>
       </Modal>
   )

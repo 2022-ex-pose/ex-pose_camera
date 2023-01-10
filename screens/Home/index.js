@@ -23,7 +23,8 @@ import {
   FONTS,
   icons,
   constants,
-  images
+  images,
+  dummyData
 } from "../../constants";
 
 import { FilterModal } from "../";
@@ -33,6 +34,7 @@ import Animated,{
   useAnimatedStyle,
   withTiming
 } from "react-native-reanimated";
+import { FlatList } from 'react-native-gesture-handler';
 
 const Home = ({ navigation }) => {
 
@@ -163,6 +165,8 @@ const Home = ({ navigation }) => {
         
     )
   }
+
+  
 
   return (
     <View

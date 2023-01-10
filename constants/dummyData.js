@@ -442,6 +442,42 @@ const recentSearch = [
     }
 ]
 
+const FilterOption = [
+    {
+        id: 1,
+        name: "즐겨찾기"
+    },
+
+    {
+        id:2,
+        name: "추천"
+    },
+
+    {
+        id: 3,
+        name: "서기"
+    },
+
+    {
+        id: 4,
+        name: "앉기"
+    },
+
+    {
+        id: 5,
+        name: "상반신"
+    },
+
+    {
+        id: 6,
+        name: "혼자"
+    },
+    {
+        id: 7,
+        name: "같이"
+    }
+]
+
 export default {
     banners,
     flashDeals,
@@ -457,5 +493,7 @@ export default {
     featuredProducts,
     topSearch,
     suggestedSearch,
-    recentSearch
+    recentSearch,
+
+    FilterOption
 }
