@@ -3,7 +3,9 @@ import Walkthrough from "./Walkthrough/Walkthrough";
 
 {/*import AuthMain from " ./Authentication/AuthMain"; 아직 안쓰고 뭔지모름*/}
 
-import Home from "./Home";
+import Home from "./Home/index";
+
+import FilterModal from "./Home/FilterModal"
 
 export {
     Welcome,
@@ -11,7 +13,8 @@ export {
 
     
 
-    Home
+    Home,
+    FilterModal
 }
 
 {/*안에 있어야되는건데 일단 빼옴 AuthMain,*/}

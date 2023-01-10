@@ -37,6 +37,7 @@ const linkedin = require('../assets/icons/linkedin.png');
 const video = require('../assets/icons/video.png');
 
 const cameraButton = require('../assets/icons/cameraButton.png');
+const cameraFlipIcon = require('../assets/icons/cameraFlipIcon.png');
 
 
 export default {
@@ -78,5 +79,6 @@ export default {
     linkedin,
     video,
 
-    cameraButton
+    cameraButton,
+    cameraFlipIcon
 }

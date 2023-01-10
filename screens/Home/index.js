@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Linking,
   Platform,
-  PermissionsAndroid,
+  PermissionsAndroid
 } from 'react-native';
 
 import {Camera, useCameraDevices} from "react-native-vision-camera";
@@ -26,13 +26,22 @@ import {
   images
 } from "../../constants";
 
+import { FilterModal } from "../";
+
+import Animated,{
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming
+} from "react-native-reanimated";
+
 const Home = ({ navigation }) => {
 
   //const [selectOption, setSelectOption] = React.useState(constants.scan_product_option.camera)
   const devices = useCameraDevices()
   const device = devices.back
+  const [showFilterModal, setShowFilterModal] = React.useState(false)
   
-  
+   
   React.useEffect(() => {
     if (Platform.OS === 'android') {
     const requestCameraPermission = async () => {
@@ -87,6 +96,10 @@ const Home = ({ navigation }) => {
         height: 25
       }}
       />
+
+    <IconButton
+      icon={icons.cameraFlipIcon}
+      />
       </View>
     )
   }
@@ -138,6 +151,14 @@ const Home = ({ navigation }) => {
       }}
       />
 
+    <IconButton
+      icon={icons.person2}
+      iconStyle={{
+        width: 40,
+        height: 40
+      }}
+      onPress={()=> setShowFilterModal(true)}
+      />
       </View>
         
     )
@@ -149,13 +170,22 @@ const Home = ({ navigation }) => {
           flex:1
         }}
     >
-      
+      {/* Filter */}
+      {showFilterModal &&
+      <FilterModal
+      isVisible={showFilterModal}
+      onClose={() => setShowFilterModal(false)}
+      />}
+
       {/*Header*/}
       {renderHeader()}
 
       {renderCamera()}
 
       {renderFooter()}
+
+      
+      
     </View>
   )
 }
